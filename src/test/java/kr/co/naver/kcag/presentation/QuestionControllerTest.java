@@ -46,6 +46,7 @@ public class QuestionControllerTest {
 			.andExpect(jsonPath("$.title").value("질문이 있습니다."))
 			.andExpect(jsonPath("$.content").value("이런 질문에 대해서 어떻게 생각하십니까?"))
 			.andExpect(jsonPath("$.answers").isEmpty())
+			.andExpect(jsonPath("$.keywords").isEmpty())
 			.andExpect(jsonPath("$.createdAt").exists());
 	}
 

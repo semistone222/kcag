@@ -1,8 +1,9 @@
 package kr.co.naver.kcag.domain;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -24,8 +25,10 @@ public class Question {
 		private Long questionId;
 		private String title;
 		private String content;
-		@OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
-		private Collection<Answer> answers = new ArrayList<Answer>();
+		@OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+		private Collection<Answer> answers = new LinkedHashSet<Answer>();
+		@OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+		private Collection<Keyword> keywords = new HashSet<Keyword>();
 		@Temporal(TemporalType.TIMESTAMP)
 		private Date createdAt = new Date();
 		
@@ -74,6 +77,18 @@ public class Question {
 			this.answers.add(answer);
 		}
 
+		public Collection<Keyword> getKeywords() {
+			return keywords;
+		}
+
+		public void setKeywords(Collection<Keyword> keywords) {
+			this.keywords = keywords;
+		}
+		
+		public void addKeywords(Keyword keyword) {
+			this.keywords.add(keyword);
+		}
+
 		public Date getCreatedAt() {
 			return createdAt;
 		}
@@ -85,6 +100,6 @@ public class Question {
 		@Override
 		public String toString() {
 			return "Question [questionId=" + questionId + ", title=" + title + ", content=" + content + ", answers="
-					+ answers + ", createdAt=" + createdAt + "]";
+					+ answers + ", keywords=" + keywords + ", createdAt=" + createdAt + "]";
 		}
 }

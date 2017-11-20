@@ -39,12 +39,18 @@ private final Logger log = LoggerFactory.getLogger(QuestionController.class);
 	
 	@GetMapping("/{id}")
 	Question find(@PathVariable Long id) {
-		return questionService.findById(id);
+		Question question = questionService.findById(id);
+		log.info("find a question : {}", question);
+		return question;
 	}
 	
 	@GetMapping
 	Iterable<Question> findAll() {
-		return questionService.findAll();
+		Iterable<Question> questions = questionService.findAll();
+		for(Question question : questions) {
+			log.info("find all question : {}", question);
+		}
+		return questions;
 	}
 	
 	@DeleteMapping("/{id}")
