@@ -25,9 +25,9 @@ public class Question {
 		private Long questionId;
 		private String title;
 		private String content;
-		@OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+		@OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 		private Collection<Answer> answers = new LinkedHashSet<Answer>();
-		@OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+		@OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 		private Collection<Keyword> keywords = new HashSet<Keyword>();
 		@Temporal(TemporalType.TIMESTAMP)
 		private Date createdAt = new Date();
@@ -73,8 +73,12 @@ public class Question {
 			this.answers = answers;
 		}
 		
-		public void addAnswers(Answer answer) {
+		public void addAnswer(Answer answer) {
 			this.answers.add(answer);
+		}
+		
+		public void removeAnswer(Answer answer) {
+			this.answers.remove(answer);
 		}
 
 		public Collection<Keyword> getKeywords() {

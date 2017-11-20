@@ -29,12 +29,12 @@ public class KcagApplication {
 			thirdQuestion = repository.save(thirdQuestion);
 			
 			// add a couple of answers
-			firstQuestion.addAnswers(new Answer(firstQuestion.getQuestionId(), "1번 질문 1번 대답"));
-			firstQuestion.addAnswers(new Answer(firstQuestion.getQuestionId(), "1번 질문 2번 대답"));
-			firstQuestion.addAnswers(new Answer(firstQuestion.getQuestionId(), "1번 질문 3번 대답"));
-			secondQuestion.addAnswers(new Answer(secondQuestion.getQuestionId(), "2번 질문 1번 대답"));
-			secondQuestion.addAnswers(new Answer(secondQuestion.getQuestionId(), "2번 질문 2번 대답"));
-			thirdQuestion.addAnswers(new Answer(thirdQuestion.getQuestionId(), "3번 질문 1번 대답"));
+			firstQuestion.addAnswer(new Answer(firstQuestion.getQuestionId(), "1번 질문 1번 대답"));
+			firstQuestion.addAnswer(new Answer(firstQuestion.getQuestionId(), "1번 질문 2번 대답"));
+			firstQuestion.addAnswer(new Answer(firstQuestion.getQuestionId(), "1번 질문 3번 대답"));
+			secondQuestion.addAnswer(new Answer(secondQuestion.getQuestionId(), "2번 질문 1번 대답"));
+			secondQuestion.addAnswer(new Answer(secondQuestion.getQuestionId(), "2번 질문 2번 대답"));
+			thirdQuestion.addAnswer(new Answer(thirdQuestion.getQuestionId(), "3번 질문 1번 대답"));
 
 			// save to repository
 			repository.save(firstQuestion);

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.naver.kcag.domain.Answer;
+import kr.co.naver.kcag.domain.Question;
 import kr.co.naver.kcag.service.AnswerService;
 
 @RestController
@@ -30,10 +31,10 @@ public class AnswerController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	Answer create(@RequestBody Answer answer) {
-		Answer newAnswer = answerService.create(answer);
-		log.info("answer crated : {}", newAnswer);
-		return newAnswer;
+	Question create(@RequestBody Answer answer) {
+		Question questionWithNewAnswer = answerService.create(answer);
+		log.info("question with new answer : {}", questionWithNewAnswer);
+		return questionWithNewAnswer;
 	}
 
 	
